@@ -1,0 +1,13 @@
+{
+  "case": {
+    "id": "demo_1",
+    "projectId": "moonpass",
+    "context": { "flow": "purchase", "platform": "ios", "inAppBrowser": false, "chainId": 1, "targetChainId": 8453 },
+    "events": [
+      { "type": "tx_signature_requested", "t": 900 },
+      { "type": "chain_switch_requested", "t": 1700 },
+      { "type": "abandoned", "t": 14200 }
+    ]
+  },
+  "contact": { "channel": "telegram", "destination": "123456789", "consentGivenAt": 1790000000000 }
+}

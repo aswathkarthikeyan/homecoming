@@ -1,0 +1,13 @@
+services:
+  homecoming:
+    build: .
+    env_file: .env
+    ports:
+      - "8787:8787"
+    volumes:
+      - homecoming-data:/data
+    environment:
+      HOMECOMING_STATE_FILE: /data/state.json
+      HOMECOMING_AUDIT_FILE: /data/audit.jsonl
+volumes:
+  homecoming-data:
