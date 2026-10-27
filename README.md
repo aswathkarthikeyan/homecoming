@@ -81,21 +81,25 @@ Telegram and Discord bots, plus a generic webhook for email gateways or a CRM. M
 ## Repository layout
 
 ```
-src/sdk          browser recorder
-src/diagnosis    rules, classifier, llm reasoner, engine
-src/recovery     playbooks, resume links, safety, policy
-src/measure      holdout assignment and lift
-src/channels     telegram, discord, webhook
-src/server       http api, queue, store
-eval             simulator, training, report
-docs             architecture and taxonomy
+src/sdk          browser recorder & non-invasive proxy interceptor (EIP-6963, EIP-712)
+src/decoder      universal EVM 4-byte custom error decoder & wallet normalizer
+src/healing      in-flight triage state machine, verified chains & cross-device QR bridge
+src/oracle       multi-chain EIP-1559 gas oracle & L1 rollup fee tracker
+src/intelligence contextual multi-armed bandits (Thompson Sampling) & CUPED uplift
+src/diagnosis    deterministic rules, naive Bayes classifier, LLM reasoner, engine
+src/recovery     playbooks, signed resume links, safety vetoes, policy
+src/measure      deterministic holdout assignment and lift estimation
+src/channels     telegram, discord, webhook dispatchers
+src/server       http api, job queue, persistence store
+eval             seeded simulator, training harness, regression report
+docs             flagship blueprint, roadmap, architecture, and taxonomy
 ```
 
-## Known limits
+## Documentation & Engineering Blueprint
 
-- One gas oracle RPC URL per server, so gas conditions assume one target chain.
-- State is an in memory store with a JSON snapshot. Use a database for high volume.
-- The recorder sees only what the wallet reports. Some wallets hide rejection reasons.
-- Linking a wallet to a Telegram or Discord handle is personal data. Get explicit consent and follow the data protection rules that apply to you.
+- [docs/FLAGSHIP_BLUEPRINT.md](file:///Users/workspace/Downloads/homecoming/docs/FLAGSHIP_BLUEPRINT.md) — Comprehensive architectural audit, 150k+ LOC sizing matrix, and enterprise self-healing specification.
+- [docs/ROADMAP.md](file:///Users/workspace/Downloads/homecoming/docs/ROADMAP.md) — Phased delivery plan from v0.1.0 prototype to v1.0.0 flagship standard.
+- [docs/ARCHITECTURE.md](file:///Users/workspace/Downloads/homecoming/docs/ARCHITECTURE.md) — Core data flow and diagnostic pipeline.
+- [docs/TAXONOMY.md](file:///Users/workspace/Downloads/homecoming/docs/TAXONOMY.md) — Canonical failure cause classification.
 
-See `docs/ARCHITECTURE.md` and `docs/TAXONOMY.md`, and `CONTRIBUTING.md` to add a cause or a playbook.
+See `CONTRIBUTING.md` to add a cause or a playbook.
