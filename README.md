@@ -97,6 +97,7 @@ docs             flagship blueprint, roadmap, architecture, and taxonomy
 
 ## Documentation & Engineering Blueprint
 
+- [docs/AUDIT_AND_BLUEPRINT.md](file:///Users/workspace/Downloads/homecoming/docs/AUDIT_AND_BLUEPRINT.md) — Complete architectural audit teardown and flagship transformation blueprint.
 - [docs/FLAGSHIP_BLUEPRINT.md](file:///Users/workspace/Downloads/homecoming/docs/FLAGSHIP_BLUEPRINT.md) — Comprehensive architectural audit, 150k+ LOC sizing matrix, and enterprise self-healing specification.
 - [docs/ROADMAP.md](file:///Users/workspace/Downloads/homecoming/docs/ROADMAP.md) — Phased delivery plan from v0.1.0 prototype to v1.0.0 flagship standard.
 - [docs/ARCHITECTURE.md](file:///Users/workspace/Downloads/homecoming/docs/ARCHITECTURE.md) — Core data flow and diagnostic pipeline.

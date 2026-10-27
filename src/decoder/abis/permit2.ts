@@ -1,0 +1,5 @@
+export const PERMIT2_ABI = [
+  { "type": "function", "name": "approve", "inputs": [{ "name": "token", "type": "address" }, { "name": "spender", "type": "address" }, { "name": "amount", "type": "uint160" }, { "name": "expiration", "type": "uint48" }], "outputs": [], "stateMutability": "nonpayable" },
+  { "type": "function", "name": "permit", "inputs": [{ "name": "owner", "type": "address" }, { "name": "permitSingle", "type": "tuple", "components": [{ "name": "details", "type": "tuple", "components": [{ "name": "token", "type": "address" }, { "name": "amount", "type": "uint160" }, { "name": "expiration", "type": "uint48" }, { "name": "nonce", "type": "uint48" }] }, { "name": "spender", "type": "address" }, { "name": "sigDeadline", "type": "uint256" }] }, { "name": "signature", "type": "bytes" }], "outputs": [], "stateMutability": "nonpayable" },
+  { "type": "function", "name": "transferFrom", "inputs": [{ "name": "from", "type": "address" }, { "name": "to", "type": "address" }, { "name": "amount", "type": "uint160" }, { "name": "token", "type": "address" }], "outputs": [], "stateMutability": "nonpayable" }
+] as const;

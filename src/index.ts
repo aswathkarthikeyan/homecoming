@@ -23,7 +23,10 @@ export { FlowRecorder } from "./sdk/recorder.js";
 
 // Flagship Protocol Extensions
 export * from "./decoder/index.js";
+export * from "./decoder/catalog/index.js";
+export * from "./decoder/abis/index.js";
 export * from "./healing/engine.js";
+export * from "./healing/registry/index.js";
 export * from "./oracle/gas.js";
 export { ThompsonBandit, sampleBeta } from "./intelligence/bandit.js";
 export type { ArmState, BanditConfig } from "./intelligence/bandit.js";
@@ -31,3 +34,5 @@ export { estimateUplift } from "./intelligence/uplift.js";
 export type { Observation, UpliftResult } from "./intelligence/uplift.js";
 export { createProviderInterceptor, listenForEIP6963Providers } from "./sdk/interceptor.js";
 export type { EIP6963ProviderDetail, EventCallback } from "./sdk/interceptor.js";
+export * from "./ui/index.js";
+export * from "./server/db/index.js";
