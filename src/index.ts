@@ -36,3 +36,7 @@ export { createProviderInterceptor, listenForEIP6963Providers } from "./sdk/inte
 export type { EIP6963ProviderDetail, EventCallback } from "./sdk/interceptor.js";
 export * from "./ui/index.js";
 export * from "./server/db/index.js";
+export { createApp } from "./server/app.js";
+export type { AppDeps } from "./server/app.js";
+export { Store, contactKey } from "./server/store.js";
+export * from "./crosschain/index.js";

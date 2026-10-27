@@ -84,16 +84,26 @@ Telegram and Discord bots, plus a generic webhook for email gateways or a CRM. M
 src/sdk          browser recorder & non-invasive proxy interceptor (EIP-6963, EIP-712)
 src/decoder      universal EVM 4-byte custom error decoder & wallet normalizer
 src/healing      in-flight triage state machine, verified chains & cross-device QR bridge
+src/crosschain   intent-based cross-chain balance scanner & Across V3 / Circle CCTP 1-click rescue solver
 src/oracle       multi-chain EIP-1559 gas oracle & L1 rollup fee tracker
 src/intelligence contextual multi-armed bandits (Thompson Sampling) & CUPED uplift
+src/ui           zero-dependency glassmorphism UI modal & in-flight rescue widgets
 src/diagnosis    deterministic rules, naive Bayes classifier, LLM reasoner, engine
 src/recovery     playbooks, signed resume links, safety vetoes, policy
 src/measure      deterministic holdout assignment and lift estimation
 src/channels     telegram, discord, webhook dispatchers
-src/server       http api, job queue, persistence store
+src/server       http api, job queue, persistence store, crosschain endpoints
 eval             seeded simulator, training harness, regression report
 docs             flagship blueprint, roadmap, architecture, and taxonomy
 ```
+
+## Superpower 2: Intent-Based Cross-Chain Balance Rescue (The "Zero-Balance" Solver)
+
+When users fail with `insufficient_funds` on a target chain (e.g. attempting to mint on Base with 0 ETH), Homecoming scans the user's balances across Ethereum, Arbitrum, Optimism, and Polygon in parallel:
+- **Calldata Encoder:** Generates Across V3 `depositV3` and Circle CCTP calldata without heavy external web3 dependencies using pure TypeScript Keccak-256 and ABI encoding.
+- **Route Optimizer:** Evaluates deficit, finds sufficient surplus tokens on other chains, sorts by speed and fee, and generates a ready-to-sign 1-click bridge payload.
+- **In-Flight UI Modal:** Renders a sleek glassmorphic modal widget (`renderCrossChainRescueModalHtml`) displaying deficit, surplus source, Across fast relayer route (~8s), and a 1-click bridge button.
+- **REST API Endpoints:** Exposes `/v1/crosschain/scan` and `/v1/crosschain/rescue` on the Homecoming server.
 
 ## Documentation & Engineering Blueprint
 

@@ -9,6 +9,7 @@ import { computeLift } from "../measure/holdout.js";
 import type { Senders } from "../channels/index.js";
 import { contactKey, Store } from "./store.js";
 import { isCauseId } from "../taxonomy.js";
+import { CrossChainRescueEngine, scanMultiChainBalances } from "../crosschain/index.js";
 
 export interface AppDeps {
   config: ProjectConfig;
@@ -18,6 +19,7 @@ export interface AppDeps {
   senders: Senders;
   /** Returns the current gas price in gwei for the target chain, or undefined if unknown. */
   gasOracle?: (chainId?: number) => Promise<number | undefined>;
+  crossChainEngine?: { planRescue(params: any): Promise<any>; scanBalances?(addr: string): Promise<any> };
   auditFile?: string;
   now?: () => number;
 }
@@ -153,6 +155,33 @@ export function createApp(deps: AppDeps) {
         const byCause: Record<string, number> = {};
         for (const r of recs) byCause[r.cause] = (byCause[r.cause] ?? 0) + 1;
         return json(res, 200, { lift, casesByCause: byCause });
+      }
+
+      if (req.method === "POST" && url.pathname === "/v1/crosschain/scan") {
+        const body = await readBody(req);
+        if (!body.address || typeof body.address !== "string") {
+          return json(res, 400, { error: "missing address parameter" }, cors);
+        }
+        const balances = deps.crossChainEngine?.scanBalances
+          ? await deps.crossChainEngine.scanBalances(body.address)
+          : await scanMultiChainBalances(body.address);
+        return json(res, 200, { address: body.address, balances }, cors);
+      }
+
+      if (req.method === "POST" && url.pathname === "/v1/crosschain/rescue") {
+        const body = await readBody(req);
+        if (!body.userAddress || typeof body.targetChainId !== "number" || typeof body.neededAmount !== "number") {
+          return json(res, 400, { error: "missing required parameters: userAddress, targetChainId, neededAmount" }, cors);
+        }
+        const engine = deps.crossChainEngine ?? new CrossChainRescueEngine();
+        const plan = await engine.planRescue({
+          userAddress: body.userAddress,
+          targetChainId: body.targetChainId,
+          neededAmount: body.neededAmount,
+          tokenSymbol: body.tokenSymbol,
+          preferredOriginChainId: body.preferredOriginChainId,
+        });
+        return json(res, 200, plan, cors);
       }
 
       if (req.method === "GET" && url.pathname === "/v1/cause" && isCauseId(url.searchParams.get("id"))) {

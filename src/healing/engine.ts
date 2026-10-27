@@ -110,6 +110,27 @@ export function resolveInFlight(cause: CauseId, context: FlowContext): InFlightD
       };
     }
 
+    case "insufficient_funds": {
+      const target = context.targetChainId ?? context.chainId ?? 1;
+      const chainDef = getChainDefinition(target);
+      return {
+        cause,
+        confidence: 0.95,
+        message: "Wallet balance is insufficient on the target network.",
+        resolution: {
+          type: "bridge_funds",
+          title: "Bridge Liquidity in 1-Click",
+          description: `Automatically check for funds across Arbitrum, Optimism, or Ethereum and bridge directly to ${chainDef?.name ?? "target network"}.`,
+          payload: {
+            action: "cross_chain_rescue",
+            targetChainId: target,
+            tokenSymbol: chainDef?.nativeCurrency.symbol ?? "ETH",
+          },
+          autoExecutable: false,
+        },
+      };
+    }
+
     case "deeplink_blocked":
     case "wallet_not_installed": {
       return {
