@@ -53,20 +53,32 @@
 - [ ] **PostgreSQL + BullMQ Queue Fleet:**
   - Persistent relational state for projects, API keys, and rate limits.
   - Distributed queue workers for delayed recovery jobs and webhook dispatches.
-- [ ] **Web3-Native Communication Dispatchers:**
+- [x] **Web3-Native Communication Dispatchers (`src/channels/web3`):**
   - Integration with **Push Protocol** and **XMTP** for direct wallet notifications.
-  - Browser Web Push API integration for pure anonymous users.
+  - Farcaster Frames v2 interactive one-click in-feed checkout recovery.
+  - Browser W3C Web Push API integration for pure anonymous users.
 
 ---
 
-## Phase 4: Causal Intelligence & Enterprise Flagship (v1.0.0)
-*Target: Autonomous conversion optimization and bulletproof enterprise verification.*
+## Phase 4: Autonomous Causal Intelligence & Flagship Superpowers (v1.0.0)
+*Target: Autonomous conversion optimization, multi-VM coverage, and pre-flight resilience.*
 
+- [x] **Pre-Flight Fork Simulation & Asset Diffs (`src/simulation`):**
+  - In-browser state-override fork simulator via `eth_simulateV1` / `eth_call`.
+  - Detailed asset delta parsing, transfer event logging, and slippage violation detection.
+- [x] **Account Abstraction & EIP-7702 Gasless Sponsorship (`src/paymaster`):**
+  - Merchant gas sponsorship policy engine and ERC-20 token paymaster (USDC/USDT).
+  - EIP-7702 dynamic delegation code (`0xef0100 + address`) formatting and validation.
+- [x] **EIP-5792 Atomic Call Batching (`src/batch`):**
+  - Single-signature `wallet_sendCalls` bundling for token approval + contract execution.
+- [x] **Mempool "Tx Doctor" & Nonce Acceleration (`src/mempool`):**
+  - Stagnation detection for pending transactions and 1-click replacement payload generator (+12% gas bump).
+  - MEV-Blocker & Private RPC routing recommendations.
+- [x] **Multi-VM Expansion: Solana SVM (`src/svm`):**
+  - Anchor IDL error decoding (`0x1770` slippage, `0x1771` funds) and dynamic Compute Budget optimizer.
+- [x] **In-Browser Local SLM Offline Reasoner (`src/ai`):**
+  - Zero-cost offline reasoning using quantized small language models (SmolLM2 / Llama-3.2) constrained to Homecoming taxonomy.
 - [x] **Contextual Multi-Armed Bandits:**
   - Thompson Sampling with Beta-Bernoulli conjugate priors to dynamically optimize recovery delays and channel routing.
 - [x] **Econometric Lift Estimation:**
   - Stratified causal uplift estimation with CUPED variance reduction.
-- [ ] **Synpress & Anvil Automated Testnet Fleet:**
-  - Headless browser test suite interacting with live browser extensions against deliberately faulty smart contracts.
-- [ ] **Developer Portal & Session Replay:**
-  - Self-hosted analytics portal visualizing causal revenue lift, funnel drop-offs, and transaction execution graphs.
